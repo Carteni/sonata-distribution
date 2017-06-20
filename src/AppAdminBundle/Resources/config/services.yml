@@ -1,0 +1,15 @@
+services:
+
+    _defaults:
+        public: false
+        autowire: true
+        autoconfigure: true
+
+
+    AppAdminBundle\EventListener\PostEventSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber, connection: default}
+
+    Cocur\Slugify\Slugify: ~
+
+    Cocur\Slugify\SlugifyInterface: '@Cocur\Slugify\Slugify'

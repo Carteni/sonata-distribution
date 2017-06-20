@@ -1,0 +1,26 @@
+# Sonata Admins
+services:
+
+    _defaults:
+        public: false
+        autowire: true
+        autoconfigure: true
+
+    AppAdminBundle\Admin\PostAdmin:
+        arguments: [~, AppBundle\Entity\Post, ~]
+        public: true
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Post" }
+
+    AppAdminBundle\Admin\CategoryAdmin:
+        arguments: [~, AppBundle\Entity\Category, ~]
+        public: true
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Category" }
+
+    #Sonata\UserBundle\Admin\Model\UserAdmin:
+    #    parent: sonata.user.admin.user
+    #    autowire: true
+    #    public: true
+    #    tags:
+    #        - { name: sonata.admin, manager_type: orm, group: "Content", label: "User"}
