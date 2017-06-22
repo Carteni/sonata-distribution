@@ -49,7 +49,14 @@ $ bin/console fos:user:create
 $ bin/console fos:user:promote
 ```
 
-8. Visit the admin page on `/admin/dashboard`.
+8. Add uploads/media folder under web folder
+```
+$ mkdir web/uploads
+$ mkdir web/uploads/media
+$ chmod -R 0777 web/uploads
+```
+
+9. Visit the admin page on `/admin/dashboard`.
 
 Screenshots:
 

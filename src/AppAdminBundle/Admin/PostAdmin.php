@@ -38,6 +38,7 @@
 
         protected function configureFormFields(FormMapper $formMapper)
         {
+
             $formMapper->add('title')
                 ->add('content', null, ['required' => false])
                 ->add('comments_enabled')
