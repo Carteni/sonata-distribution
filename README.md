@@ -43,12 +43,24 @@ $ bin/console cache:clear
 $ bin/console assets:install
 ```
 
-Some screenshots:
+7. Create and promote user to ROLE_SUPER_ADMIN.
+```
+$ bin/console fos:user:create
+$ bin/console fos:user:promote
+```
 
-<img src="http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_01.png" />
-<img src="http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_02.png" />
-<img src="http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_03.png" />
-<img src="http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_04.png" />
+8. Visit the admin page on `/admin/dashboard`.
+
+
+1. [Dashboard][1]
+2. [Media / List][2]
+3. [Category / Tree][3]
+4. [Category / Edit][4]
 
 
 ###### ♥ ☕ m|e|s
+
+[1]: http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_01.png
+[2]: http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_02.png
+[3]: http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_03.png
+[4]: http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_04.png
