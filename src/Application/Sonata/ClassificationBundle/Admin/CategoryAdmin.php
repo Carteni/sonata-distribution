@@ -15,6 +15,12 @@
 
     class CategoryAdmin extends \Sonata\ClassificationBundle\Admin\CategoryAdmin
     {
+        // NEXT_MAJOR: remove this override
+        protected $formOptions = array(
+            'cascade_validation' => true,
+            'allow_extra_fields' => true
+        );
+
         /**
          * {@inheritdoc}
          */
