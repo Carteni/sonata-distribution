@@ -11,6 +11,8 @@
      */
     class MediaAdmin extends \Sonata\MediaBundle\Admin\ORM\MediaAdmin
     {
+        protected $baseRoutePattern = "media";
+
         /**
          * {@inheritdoc}
          */

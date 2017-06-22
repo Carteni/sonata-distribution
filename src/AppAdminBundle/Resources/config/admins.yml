@@ -10,7 +10,7 @@ services:
         arguments: [~, AppBundle\Entity\Post, ~]
         public: true
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Post" }
+            - { name: sonata.admin, manager_type: orm, group: "dashboard.content.group", label: "dashboard.content.post.label" }
 
     #Sonata\UserBundle\Admin\Model\UserAdmin:
     #    parent: sonata.user.admin.user

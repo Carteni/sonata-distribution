@@ -16,10 +16,12 @@
     class CategoryAdmin extends \Sonata\ClassificationBundle\Admin\CategoryAdmin
     {
         // NEXT_MAJOR: remove this override
-        protected $formOptions = array(
+        protected $formOptions = [
             'cascade_validation' => true,
-            'allow_extra_fields' => true
-        );
+            'allow_extra_fields' => true,
+        ];
+
+        protected $baseRoutePattern = "category";
 
         /**
          * {@inheritdoc}
@@ -107,5 +109,16 @@
                     ->end()
                 ;
             }
+        }
+
+        public function getPersistentParameters()
+        {
+            if (!$this->getRequest()) {
+                return array();
+            }
+
+            return array(
+                'context'  => $this->getRequest()->get('context', 'default'),
+            );
         }
     }
