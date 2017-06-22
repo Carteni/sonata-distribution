@@ -51,6 +51,7 @@ $ bin/console fos:user:promote
 
 8. Visit the admin page on `/admin/dashboard`.
 
+Screenshots:
 
 1. [Dashboard][1]
 2. [Media / List][2]
