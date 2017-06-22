@@ -1,6 +1,13 @@
-app_admin:
-    resource: "@AppAdminBundle/Resources/config/routing.yml"
+# Sonata
+app_admin_sonata:
+    resource: "@AppAdminBundle/Resources/config/routing/sonata.yml"
+    prefix: /admin
 
+# FOS
+app_admin_fos:
+    resource: "@AppAdminBundle/Resources/config/routing/fos.yml"
+
+# AppBundle
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

@@ -41,6 +41,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
+        server_version: '5.6'
         driver: pdo_mysql
         host: '%database_host%'
         port: '%database_port%'
@@ -48,22 +49,25 @@ doctrine:
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.project_dir%/var/data/data.sqlite"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #path: '%database_path%'
         default_table_options:
             charset: utf8mb4
             collate: utf8mb4_unicode_ci
             engine: InnoDB
+        # Sonata Doctrine2 ORM Admin Bundle
         types:
             json: Sonata\Doctrine\Types\JsonType
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        # Entity managers
+        entity_managers:
+            default:
+                auto_mapping: true
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                mappings:
+                    ApplicationSonataMediaBundle: ~
+                    ApplicationSonataClassificationBundle: ~
+                    SonataMediaBundle: ~
+                    SonataClassificationBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:

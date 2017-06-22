@@ -1,4 +1,4 @@
-# SonataBlock configs.
+# Sonata Block.
 sonata_block:
     default_contexts: [cms]
     blocks:
@@ -10,7 +10,80 @@ sonata_block:
         sonata.admin.block.search_result:
             contexts: [admin]
 
-# FOSUser configs.
+# Sonata Admin
+sonata_admin:
+    title: "Carteni's Blog"
+    options:
+         html5_validate: false
+    show_mosaic_button: false
+    #dashboard:
+    #     groups:
+    #         Content:
+    #             label: 'Content Management'
+    #             items: ~
+    #         User:
+    #             label: 'User Management'
+    #             items:
+    #                 - sonata.user.admin.user
+                     # - sonata.user.admin.group
+    breadcrumbs:
+        child_admin_route: edit
+
+# Sonata Media
+# https://github.com/sonata-project/SonataMediaBundle/issues/707
+# https://stackoverflow.com/questions/38568753/sonata-media-bundle-missing-entity-category
+# https://github.com/sonata-project/SonataMediaBundle/issues/862#issuecomment-163956345
+#
+# Execute:
+# bin/console sonata:classification:fix-context
+# bin/console sonata:media:fix-media-context
+sonata_media:
+    providers:
+        image:
+            resizer: sonata.media.resizer.square
+
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
+
+    default_context: media # you need to set a context
+
+    class:
+        media: Application\Sonata\MediaBundle\Entity\Media
+        gallery: Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media: Application\Sonata\MediaBundle\Entity\GalleryHasMedia
+        category: Application\Sonata\ClassificationBundle\Entity\Category
+
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+        media:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.image
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /uploads/media
+
+    filesystem:
+        local:
+            directory:  "%kernel.root_dir%/../web/uploads/media"
+            create:     false
+
+# Sonata Classification
+sonata_classification:
+    admin:
+        category:
+            class: Application\Sonata\ClassificationBundle\Admin\CategoryAdmin
+
+# FOSUser.
 fos_user:
     db_driver: orm
     firewall_name: main
@@ -23,22 +96,3 @@ fos_user:
     from_email:
         address: webmaster@carteni.blog
         sender_name: Admin
-
-# Sonata Admin
-sonata_admin:
-    title: "Carteni's Blog"
-    options:
-         html5_validate: false
-    show_mosaic_button: false
-    dashboard:
-         groups:
-             Content:
-                 label: 'Content Management'
-                 items: ~
-             User:
-                 label: 'User Management'
-                 items:
-                     - sonata.user.admin.user
-                     # - sonata.user.admin.group
-    breadcrumbs:
-        child_admin_route: edit

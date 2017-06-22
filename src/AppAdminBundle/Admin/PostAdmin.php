@@ -41,9 +41,11 @@ class PostAdmin extends AbstractAdmin
 					   'choices' => $this->getPostStatus(),
 				   ))
 				   ->add('category', 'sonata_type_model', array(
-					   'class'        => 'AppBundle\Entity\Category',
-					   'choice_label' => 'name',
-					   'btn_add' => 'New Category'
+					   'required'    => false,
+					   'btn_add'     => 'Add New Category',
+					   'btn_delete'  => false,
+					   'expanded'    => false,
+					   'placeholder' => 'No Category selected',
 				   ));
 	}
 
@@ -60,7 +62,7 @@ class PostAdmin extends AbstractAdmin
 						   'advanced_filter' => false,
 					   ), ChoiceType::class, array('choices' => $this->getPostStatus(),))
 					   ->add('category', null, array('advanced_filter' => false), 'entity', array(
-						   'class'        => 'AppBundle\Entity\Category',
+						   'class'        => 'Application\Sonata\ClassificationBundle\Entity\Category',
 						   'choice_label' => 'name',
 					   ));
 	}

@@ -2,6 +2,7 @@
 
 namespace AppAdminBundle\DependencyInjection;
 
+use Sonata\MediaBundle\Admin\ORM\MediaAdmin;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
