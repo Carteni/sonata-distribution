@@ -31,7 +31,7 @@ $ bin/console doctrine:schema:update --force
 5. Fix Sonata contexts.
 
 This distribution defines 2 contexts: _default_ e _media_ under `sonata_media` config
-in `\src\AppAdminBundle\Resources\config\config.yml`
+in `src\AppAdminBundle\Resources\config\config.yml`
 ```
 $ bin/console sonata:classification:fix-context
 $ bin/console sonata:media:fix-media-context
