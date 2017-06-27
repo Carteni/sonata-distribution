@@ -11,6 +11,14 @@ services:
         public: true
         tags:
             - { name: sonata.admin, manager_type: orm, group: "dashboard.content.group", label: "dashboard.content.post.label" }
+        calls:
+            - { method: 'addChild', arguments: ['@AppAdminBundle\Admin\CommentAdmin'] }
+
+    AppAdminBundle\Admin\CommentAdmin:
+            arguments: [~, AppBundle\Entity\Comment, ~]
+            public: true
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "dashboard.content.group", label: "dashboard.content.comment.label" }
 
     #Sonata\UserBundle\Admin\Model\UserAdmin:
     #    parent: sonata.user.admin.user

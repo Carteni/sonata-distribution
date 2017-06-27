@@ -1,0 +1,11 @@
+{% extends "@AppAdmin/Block/block_post_layout.html.twig" %}
+
+{% block post_status %}
+    <td>
+        {% trans_default_domain "SonataAdminBundle" %}
+        {% set label_type = post.status is constant("AppBundle\\Entity\\Post::DRAFT") ? 'warning' : 'success' %}
+        <span class="label label-{{ label_type }}">{{ post.status|trans() }}</span>
+    </td>
+{% endblock %}
+
+{% block comments_count %}{% endblock %}

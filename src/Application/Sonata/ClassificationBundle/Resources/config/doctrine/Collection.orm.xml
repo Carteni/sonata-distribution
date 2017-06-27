@@ -20,7 +20,7 @@
         <!-- As we are using utf8mb4 charset (4 bytes for 1 char), length has been reduced at 191 chars to workaround the InnoDB limit of 767 bytes -->
         <attribute-overrides>
             <attribute-override name="slug">
-                <field length="191" column="slug" />
+                <field column="slug" length="191" />
             </attribute-override>
         </attribute-overrides>
 

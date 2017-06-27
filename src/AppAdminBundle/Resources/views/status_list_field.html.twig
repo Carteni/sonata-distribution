@@ -1,0 +1,8 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% trans_default_domain "SonataAdminBundle" %}
+{% set label_type = object.status is constant("AppBundle\\Entity\\Post::DRAFT") ? 'warning' : 'success' %}
+
+{% block field %}
+    <span class="label label-{{ label_type }}">{{ object.status|trans() }}</span>
+{% endblock %}

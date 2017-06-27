@@ -1,0 +1,6 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{# value => user #}
+{% block field %}
+    <a href="{{ path('admin_sonata_user_user_show', {'id': value.id}) }}" title="{{ value.username }}">{{ value.username }}</a>
+{% endblock %}

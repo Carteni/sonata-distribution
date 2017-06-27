@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Post;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -11,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    /**
+     * @param $max
+     *
+     * @return Post[]
+     */
+    public function getLatest($max)
+    {
+        return $this->findBy([], ['last_modified' => 'DESC'], $max);
+    }
 }

@@ -1,2 +1,13 @@
-dashboard.content.group: "Content"
-dashboard.content.post.label: "Post"
+dashboard:
+    content:
+        group: "Content"
+        post.label: "Post"
+        comment.label: "Comment"
+post:
+    comment:
+        list: "List"
+        label: "Comments"
+        create: "New comment"
+status:
+    draft: "Draft"
+    published: "Published"

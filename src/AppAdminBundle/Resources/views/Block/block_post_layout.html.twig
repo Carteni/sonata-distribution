@@ -1,0 +1,28 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    <div class="cms-block cms-block-element">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{{ settings.title }}</h3>
+            </div>
+            <div class="box-body">
+                <table class="table table-hover">
+                    <tbody>
+                    {% for post in posts %}
+                        <tr>
+                            {% block post_title %}
+                                <td width="80%">
+                                    <a href="{{ path('app_post_edit', {'id': post.id}) }}" class="btn btn-link btn-flat">{{ post.title|truncate(50) }}</a>
+                                </td>
+                            {% endblock %}
+                            {% block post_status %}{% endblock %}
+                            {% block comments_count %}{% endblock %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

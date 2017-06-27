@@ -9,6 +9,9 @@ sonata_block:
             contexts: [admin]
         sonata.admin.block.search_result:
             contexts: [admin]
+        sonata.block.service.text: ~
+        AppAdminBundle\Block\LatestPostBlock: ~
+        AppAdminBundle\Block\FeaturedPostBlock: ~
 
 # Sonata Admin
 sonata_admin:
@@ -16,7 +19,22 @@ sonata_admin:
     options:
          html5_validate: false
     show_mosaic_button: false
-    #dashboard:
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+            -
+                position: right
+                type: AppAdminBundle\Block\LatestPostBlock
+                settings:
+                    title: "Latest Posts"
+            -
+                position: right
+                type: AppAdminBundle\Block\FeaturedPostBlock
+                settings:
+                    title: "Featured Posts"
+
     #     groups:
     #         Content:
     #             label: 'Content Management'
@@ -26,10 +44,11 @@ sonata_admin:
     #             items:
     #                 - sonata.user.admin.user
                      # - sonata.user.admin.group
-    breadcrumbs:
-        child_admin_route: edit
+    #breadcrumbs:
+    #    child_admin_route: edit
 
 # Sonata Media
+#
 # https://github.com/sonata-project/SonataMediaBundle/issues/707
 # https://stackoverflow.com/questions/38568753/sonata-media-bundle-missing-entity-category
 # https://github.com/sonata-project/SonataMediaBundle/issues/862#issuecomment-163956345
@@ -91,7 +110,7 @@ sonata_user:
         group:
             class: Application\Sonata\UserBundle\Admin\GroupAdmin
 
-# FOSUser.
+# FOS User
 fos_user:
     db_driver: orm
     firewall_name: main
