@@ -1,0 +1,6 @@
+{% trans_default_domain "SonataAdminBundle" %}
+{% set comments_label = "post.comment.label"|trans() %}
+<a class="btn btn-sm btn-default" title="{{ comments_label }}"
+   href="{{ admin.generateObjectUrl("AppAdminBundle\\Admin\\CommentAdmin.list", object) }}">
+    {{ comments_label }}
+</a>

@@ -16,6 +16,8 @@ sonata_block:
 # Sonata Admin
 sonata_admin:
     title: "Carteni's Blog"
+    templates:
+        layout: AppAdminBundle::standard_layout.html.twig
     options:
          html5_validate: false
     show_mosaic_button: false
@@ -28,22 +30,28 @@ sonata_admin:
                 position: right
                 type: AppAdminBundle\Block\LatestPostBlock
                 settings:
-                    title: "Latest Posts"
+                    title: block.latest_posts
             -
                 position: right
                 type: AppAdminBundle\Block\FeaturedPostBlock
                 settings:
-                    title: "Featured Posts"
+                    title: block.featured_posts
 
-    #     groups:
-    #         Content:
-    #             label: 'Content Management'
-    #             items: ~
-    #         User:
-    #             label: 'User Management'
-    #             items:
-    #                 - sonata.user.admin.user
-                     # - sonata.user.admin.group
+        groups:
+            Content:
+                label: 'dashboard.content.group.content_label'
+                items:
+                    - AppAdminBundle\Admin\PostAdmin
+                    - AppAdminBundle\Admin\CommentAdmin
+                    - sonata.classification.admin.context
+                    - sonata.classification.admin.category
+                    - sonata.media.admin.media
+            User:
+                label: 'dashboard.content.group.user_label'
+                icon: '<i class="fa fa-user"></i>'
+                items:
+                    - sonata.user.admin.user
+                    - sonata.user.admin.group
     #breadcrumbs:
     #    child_admin_route: edit
 

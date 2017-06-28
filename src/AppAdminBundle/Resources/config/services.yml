@@ -22,13 +22,13 @@ services:
     AppAdminBundle\Block\LatestPostBlock:
         public: true
         autowire: false
-        arguments: ['Latest Posts', '@templating', "@=service('doctrine.orm.entity_manager').getRepository('AppBundle:Post')"]
+        arguments: ['block.latest_posts', '@templating', "@=service('doctrine.orm.entity_manager').getRepository('AppBundle:Post')"]
         tags:
             - { name: sonata.block }
 
     AppAdminBundle\Block\FeaturedPostBlock:
         public: true
         autowire: false
-        arguments: ['Latest Posts', '@templating', "@=service('doctrine.orm.entity_manager').getRepository('AppBundle:Comment')"]
+        arguments: ['block.featured_posts', '@templating', "@=service('doctrine.orm.entity_manager').getRepository('AppBundle:Comment')"]
         tags:
             - { name: sonata.block }

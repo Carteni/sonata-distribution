@@ -28,38 +28,6 @@ class PostAdmin extends AbstractAdmin
     protected $baseRoutePattern = 'post';
     protected $translationDomain = 'SonataAdminBundle';
 
-    public function toString($object)
-    {
-        return $object instanceof Post ? $object->getTitle() : 'Blog Post'; // shown in the breadcrumb on the create view
-    }
-
-    // Fields to be shown create/edit forms.
-
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-        $formMapper->add('title')
-            ->add('content', null, ['required' => false])
-            ->add('comments_enabled')
-            ->add('status',
-                  'choice',
-                  [
-                      'choices' => Post::getStatusList(),
-                      'translation_domain' => 'SonataAdminBundle',
-                  ])
-            ->add('category',
-                  'sonata_type_model',
-                  [
-                      'required' => false,
-                      'btn_add' => 'Add New Category',
-                      'btn_delete' => false,
-                      'expanded' => false,
-                      'placeholder' => 'No Category selected',
-                  ])
-        ;
-    }
-
-    // Fields to be shown on filter forms.
-
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('title', null, ['advanced_filter' => false])
@@ -90,7 +58,32 @@ class PostAdmin extends AbstractAdmin
         ;
     }
 
-    // Fields to be shown on lists.
+    // Fields to be shown create/edit forms.
+
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper->add('title')
+            ->add('content', null, ['required' => false])
+            ->add('comments_enabled')
+            ->add('status',
+                  'choice',
+                  [
+                      'choices' => Post::getStatusList(),
+                      'translation_domain' => 'SonataAdminBundle',
+                  ])
+            ->add('category',
+                  'sonata_type_model',
+                  [
+                      'required' => false,
+                      'btn_add' => 'Add New Category',
+                      'btn_delete' => false,
+                      'expanded' => false,
+                      'placeholder' => 'No Category selected',
+                  ])
+        ;
+    }
+
+    // Fields to be shown on filter forms.
 
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -115,13 +108,14 @@ class PostAdmin extends AbstractAdmin
                       'actions' => [
                           'edit' => [],
                           'delete' => [],
-                          'comments' => ['template' => '@AppAdmin/post_comments_action_list_field.html.twig'],
+                          'comments' => ['template' => '@AppAdmin/post_comment_action_list_field.html.twig'],
                       ],
                   ])
         ;
     }
 
-    // https://stackoverflow.com/questions/26745512/sonata-symfony-parent-child-structure-setup
+    // Fields to be shown on lists.
+
     protected function configureTabMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
     {
         if (!in_array($action, ['edit'])) {
@@ -157,13 +151,11 @@ class PostAdmin extends AbstractAdmin
                                     ]);
     }
 
-    // Applica il filtro al caricamento della lista.
-    /*public function configureDefaultFilterValues(array &$filterValues)
+    // https://stackoverflow.com/questions/26745512/sonata-symfony-parent-child-structure-setup
+
+    public function toString($object)
     {
-        $filterValues['comments_enabled'] = array(
-                'type'  => EqualType::TYPE_IS_EQUAL,
-                'value' => BooleanType::TYPE_YES,
-        );
-    }*/
+        return $object instanceof Post ? $object->getTitle() : 'Blog Post'; // shown in the breadcrumb on the create view
+    }
 }
 

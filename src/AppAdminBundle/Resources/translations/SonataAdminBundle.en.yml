@@ -1,8 +1,17 @@
 dashboard:
     content:
-        group: "Content"
-        post.label: "Post"
-        comment.label: "Comment"
+        post_label: "Posts"
+        comment_label: "Comments"
+        group:
+            content_label: "Content Management"
+            user_label: "User Management"
+    user:
+        group: "User"
+        user_label: "Users"
+        group_label: "Group"
+block:
+    latest_posts: "Latest Posts"
+    featured_posts: "Featured Posts"
 post:
     comment:
         list: "List"

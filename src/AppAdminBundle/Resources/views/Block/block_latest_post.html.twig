@@ -1,5 +1,9 @@
 {% extends "@AppAdmin/Block/block_post_layout.html.twig" %}
 
+{% trans_default_domain settings.catalogue %}
+
+{% block block_title %}<i class="fa fa-pencil-square"></i> {{ settings.title|trans }}{% endblock %}
+
 {% block post_status %}
     <td>
         {% trans_default_domain "SonataAdminBundle" %}

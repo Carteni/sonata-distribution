@@ -1,5 +1,15 @@
 {% extends "@AppAdmin/Block/block_post_layout.html.twig" %}
 
+{% trans_default_domain settings.catalogue %}
+
 {% block post_status %}{% endblock %}
 
-{% block comments_count %}<td><span class="badge">{{ post.num_comments }}</span></td>{% endblock %}
+{% block block_title %}<i class="fa fa-comments"></i> {{ settings.title|trans }}{% endblock %}
+
+{% block comments_count %}
+    <td>
+        <div>
+            <span class="badge">{{ post.num_comments }}</span>
+        </div>
+    </td>
+{% endblock %}

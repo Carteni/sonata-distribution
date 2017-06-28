@@ -33,6 +33,7 @@ security:
                 provider: fos_userbundle
                 login_path: sonata_user_admin_security_login
                 use_forward: false
+                default_target_path: sonata_admin_dashboard
                 check_path: sonata_user_admin_security_check
                 failure_path: null
             logout:
