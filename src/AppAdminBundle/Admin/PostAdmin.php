@@ -3,6 +3,7 @@
 namespace AppAdminBundle\Admin;
 
 use AppBundle\Entity\Post;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Admin\AdminInterface;
@@ -63,7 +64,12 @@ class PostAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('title')
-            ->add('content', null, ['required' => false])
+            ->add('content',
+                  CKEditorType::class,
+                  [
+                      'required' => false,
+                      'config_name' => 'default',
+                  ])
             ->add('comments_enabled')
             ->add('status',
                   'choice',

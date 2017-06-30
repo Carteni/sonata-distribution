@@ -2,10 +2,8 @@
 
 namespace AppAdminBundle\DependencyInjection;
 
-use Sonata\MediaBundle\Admin\ORM\MediaAdmin;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
@@ -14,30 +12,30 @@ use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
  *
  * @package AdminBundle\DependencyInjection
  */
-class AppAdminExtension extends ConfigurableExtension implements PrependExtensionInterface
+class AppAdminExtension extends ConfigurableExtension /*implements PrependExtensionInterface*/
 {
+    /**
+     * Allow an extension to prepend the extension configurations.
+     *
+     * @param ContainerBuilder $container
+     */
+    // config.yml id loaded from app/config/config.yml
+    /*public function prepend(ContainerBuilder $container)
+    {
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('config.yml');
+    }*/
 
-	/**
-	 * Allow an extension to prepend the extension configurations.
-	 *
-	 * @param ContainerBuilder $container
-	 */
-	public function prepend(ContainerBuilder $container)
-	{
-		$loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-		$loader->load('config.yml');
-	}
-
-	/**
-	 * Configures the passed container according to the merged configuration.
-	 *
-	 * @param array $mergedConfig
-	 * @param ContainerBuilder $container
-	 */
-	protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
-	{
-		$loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-		$loader->load('admins.yml');
-		$loader->load('services.yml');
-	}
+    /**
+     * Configures the passed container according to the merged configuration.
+     *
+     * @param array $mergedConfig
+     * @param ContainerBuilder $container
+     */
+    protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
+    {
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('admins.yml');
+        $loader->load('services.yml');
+    }
 }

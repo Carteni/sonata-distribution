@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4773549d839c35958c12a7e285b9bd6d",
+    "content-hash": "fd5a309bd0089b7f390ee2e69955d9ba",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -962,6 +962,65 @@
                 "CKEditor"
             ],
             "time": "2017-06-05T12:35:35+00:00"
+        },
+        {
+            "name": "egeloen/form-extra-bundle",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/IvoryFormExtraBundle.git",
+                "reference": "f9e019f96a2ca8e6ffe97035dbeb4d89990556f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/IvoryFormExtraBundle/zipball/f9e019f96a2ca8e6ffe97035dbeb4d89990556f7",
+                "reference": "f9e019f96a2ca8e6ffe97035dbeb4d89990556f7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6|^7.0",
+                "symfony/form": "^2.7|^3.0",
+                "symfony/framework-bundle": "^2.7|^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^5.0",
+                "symfony/phpunit-bridge": "^2.7|^3.0",
+                "symfony/templating": "^2.7|^3.0",
+                "symfony/twig-bridge": "^2.7|^3.0",
+                "twig/twig": "^1.18"
+            },
+            "suggest": {
+                "symfony/twig-bridge": "Allows to use Twig templates"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ivory\\FormExtraBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "Provides a JavaScript/StyleSheet fragment for the Symfony Form component.",
+            "keywords": [
+                "form",
+                "javascript",
+                "stylesheet"
+            ],
+            "time": "2017-02-27T20:58:13+00:00"
         },
         {
             "name": "egeloen/json-builder",
@@ -2433,16 +2492,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "3.20.0",
+            "version": "3.20.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "76f7aff666a4e1c8833e269be278420ba4b32c92"
+                "reference": "10c27f6ee911c452ee67059bfdc1a1fca8953904"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/76f7aff666a4e1c8833e269be278420ba4b32c92",
-                "reference": "76f7aff666a4e1c8833e269be278420ba4b32c92",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/10c27f6ee911c452ee67059bfdc1a1fca8953904",
+                "reference": "10c27f6ee911c452ee67059bfdc1a1fca8953904",
                 "shasum": ""
             },
             "require": {
@@ -2528,7 +2587,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2017-06-22T08:28:34+00:00"
+            "time": "2017-06-27T15:41:31+00:00"
         },
         {
             "name": "sonata-project/block-bundle",

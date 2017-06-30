@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @package Application\Sonata\MediaBundle\Controller
  */
-class MediaAdminController extends \Sonata\MediaBundle\Controller\MediaAdminController
+class MediaAdminController extends \CoopTilleuls\Bundle\CKEditorSonataMediaBundle\Controller\MediaAdminController
 {
 	/**
 	 * {@inheritdoc}
@@ -29,8 +29,9 @@ class MediaAdminController extends \Sonata\MediaBundle\Controller\MediaAdminCont
 
 		// set the default context
 		if (!$filters || !array_key_exists('context', $filters)) {
-			$context = $this->admin->getPersistentParameter('context', $this->get('sonata.media.pool')
-																			->getDefaultContext());
+			$context = $this->admin->getPersistentParameter('context',
+															$this->get('sonata.media.pool')
+																	->getDefaultContext());
 		} else {
 			$context = $filters['context']['value'];
 		}
@@ -40,8 +41,9 @@ class MediaAdminController extends \Sonata\MediaBundle\Controller\MediaAdminCont
 		$rootCategory = null;
 		if ($this->has('sonata.classification.manager.category')) {
 			$rootCategory = $this->get('sonata.classification.manager.category')
-								 ->getRootCategoriesForContext($this->get('sonata.classification.manager.context')
-																	->find($context));
+					->getRootCategoriesForContext($this->get('sonata.classification.manager.context')
+														  ->find($context))
+			;
 		}
 
 		if ((null !== $rootCategory && !empty($rootCategory)) && !$filters) {
@@ -49,10 +51,11 @@ class MediaAdminController extends \Sonata\MediaBundle\Controller\MediaAdminCont
 		}
 		if ($this->has('sonata.media.manager.category') && $request->get('category')) {
 			$category = $this->get('sonata.media.manager.category')
-							 ->findOneBy(array(
-								 'id'      => (int)$request->get('category'),
-								 'context' => $context,
-							 ));
+					->findOneBy([
+										'id' => (int)$request->get('category'),
+										'context' => $context,
+								])
+			;
 
 			if (!empty($category)) {
 				$datagrid->setValue('category', null, $category->getId());
@@ -62,18 +65,22 @@ class MediaAdminController extends \Sonata\MediaBundle\Controller\MediaAdminCont
 		}
 
 		$formView = $datagrid->getForm()
-							 ->createView();
+				->createView()
+		;
 
 		$this->setFormTheme($formView, $this->admin->getFilterTheme());
 
-		return $this->render($this->admin->getTemplate('list'), array(
-			'action'        => 'list',
-			'form'          => $formView,
-			'datagrid'      => $datagrid,
-			'root_category' => $rootCategory,
-			'csrf_token'    => $this->getCsrfToken('sonata.batch'),
-		));
+		return $this->render($this->admin->getTemplate('list'),
+							 [
+									 'action' => 'list',
+									 'form' => $formView,
+									 'datagrid' => $datagrid,
+									 'root_category' => $rootCategory,
+									 'csrf_token' => $this->getCsrfToken('sonata.batch'),
+							 ]);
 	}
+
+
 
 	/**
 	 * Sets the admin form theme to form view. Used for compatibility between Symfony versions.
@@ -92,7 +99,8 @@ class MediaAdminController extends \Sonata\MediaBundle\Controller\MediaAdminCont
 			return;
 		}
 		$twig->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')
-			 ->setTheme($formView, $theme);
+				->setTheme($formView, $theme)
+		;
 	}
 
 }

@@ -64,6 +64,7 @@ Screenshots:
 2. [Media / List][2]
 3. [Category / Tree][3]
 4. [Category / Edit][4]
+5. [Post / Edit (SonataMediaBundle and CKEditor integration)][5]
 
 
 ###### ♥ ☕ m|e|s
@@ -72,3 +73,4 @@ Screenshots:
 [2]: http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_02.png
 [3]: http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_03.png
 [4]: http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_04.png
+[5]: http://www.multimediaexperiencestudio.it/github/sonata-distribution/screen_05.png

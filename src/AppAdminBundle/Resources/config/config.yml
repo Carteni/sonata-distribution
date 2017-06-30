@@ -18,6 +18,7 @@ sonata_admin:
     title: "Carteni's Blog"
     templates:
         layout: AppAdminBundle::standard_layout.html.twig
+        #edit: AppAdminBundle:CRUD:edit.html.twig
     options:
          html5_validate: false
     show_mosaic_button: false
@@ -52,6 +53,9 @@ sonata_admin:
                 items:
                     - sonata.user.admin.user
                     - sonata.user.admin.group
+            my_group:
+                    provider: custom_menu # alias defined in services.yml
+                    icon: '<i class="fa fa-edit"></i>'
     #breadcrumbs:
     #    child_admin_route: edit
 
@@ -90,11 +94,17 @@ sonata_media:
         media:
             providers:
                 - sonata.media.provider.image
-                - sonata.media.provider.image
+                - sonata.media.provider.file
             formats:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
-
+        upload:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
     cdn:
         server:
             path: /uploads/media
@@ -131,3 +141,64 @@ fos_user:
     from_email:
         address: webmaster@carteni.blog
         sender_name: Admin
+
+
+# Sonata Formatter
+#sonata_formatter:
+#    default_formatter: richhtml
+#    formatters:
+#        richhtml:
+#            service: sonata.formatter.text.raw
+#            extensions:
+#                - sonata.formatter.twig.control_flow
+#                - sonata.formatter.twig.gist
+#                - sonata.media.formatter.twig
+#        twig:
+#            service: sonata.formatter.text.twigengine
+#            extensions: [] # Twig formatter cannot have extensions
+
+# IvoryCKEditorBundle
+ivory_ck_editor:
+    jquery: true
+    autoload: true
+    async: false
+    default_config: default
+    configs:
+        # https://github.com/egeloen/IvoryCKEditorBundle/issues/194
+        default:
+            filebrowserBrowseRoute: admin_sonata_media_media_browser
+            filebrowserImageBrowseRoute: admin_sonata_media_media_browser
+            # Display images by default when clicking the image dialog browse button
+            filebrowserImageBrowseRouteParameters:
+                provider: sonata.media.provider.image
+            filebrowserUploadRoute: admin_sonata_media_media_upload
+            filebrowserUploadRouteParameters:
+                provider: sonata.media.provider.file
+                context: uplodad # from "link" button
+
+            # Upload file as image when sending a file from the image dialog
+            filebrowserImageUploadRoute: admin_sonata_media_media_upload
+            filebrowserImageUploadRouteParameters:
+                provider: sonata.media.provider.image
+                context: upload # Optional, to upload in a custom context (from "image" button)
+                # other parameters...
+            toolbar:
+                - [Bold, Italic, Underline, -, NumberedList, BulletedList, -, Outdent, Indent, -, Blockquote, -, Image, Link, Unlink]
+                - [Templates, Format, Styles]
+                - [Maximize, Source]
+            format_tags: 'p;h1;h2;h3;h4;div'
+            language: '%locale%'
+            allowedContent: true
+            #contentCss: "app.css"
+            uiColor: "#FFFFFF"
+
+coop_tilleuls_ck_editor_sonata_media:
+    templates:
+        layout: ApplicationSonataMediaBundle:MediaAdmin:layout.html.twig # Layout of the file browser
+        browser: ApplicationSonataMediaBundle:MediaAdmin:browser.html.twig # Template of the CKEditor file browser
+        upload: ApplicationSonataMediaBundle:MediaAdmin:upload.html.twig # Template returned after a direct upload
+
+sonata_doctrine_orm_admin:
+    templates:
+        form:
+            - AppAdminBundle:Form:form_admin_fields.html.twig
