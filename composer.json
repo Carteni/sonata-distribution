@@ -1,6 +1,6 @@
 {
     "name": "carteni/sonata-distribution",
-    "license": "proprietary",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {
